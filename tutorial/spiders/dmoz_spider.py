@@ -12,23 +12,38 @@ class DmozSpider(scrapy.Spider):
     name = "proadvisor" #name the spider
     allowed_domains = ["proadvisorservice.intuit.com"] #set domain to scrape
 
+    min_lat = 30
+    max_lat = 31
+    min_long = -100
+    max_long = -99
+
+    haw_min_long = 0
+    haw_max_long = 0
+    haw_min_lat = 0
+    haw_max_lat = 0
+
+    alas_min_long = 0
+    alas_max_long = 0
+    alas_min_lat = 0
+    alas_max_lat = 0
+
     #all longitudes and latitudes covered in Mainland America
-    min_lat = 24
-    max_lat = 50
-    min_long = -125
-    max_long = -65
+    #min_lat = 24
+    #max_lat = 50
+    #min_long = -125
+    #max_long = -65
 
     #all longitudes and latitudes covered in Hawaii
-    haw_min_long = -175
-    haw_max_long = -153
-    haw_min_lat = 20
-    haw_max_lat = 30
+    #haw_min_long = -175
+    #haw_max_long = -153
+    #haw_min_lat = 20
+    #haw_max_lat = 30
 
     #all longitudes and latitudes covered in Alaska
-    alas_min_long = -170
-    alas_max_long = -140
-    alas_min_lat = 54
-    alas_max_lat = 71
+    #alas_min_long = -170
+    #alas_max_long = -140
+    #alas_min_lat = 54
+    #alas_max_lat = 71
 
     #start going through the webpages
     def start_requests(self):

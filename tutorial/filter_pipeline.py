@@ -98,12 +98,16 @@ class DuplicatesPipeline(object):
                 raise DropItem('Duplicate NAME OR EMAIL found %s, %s', tempName, compName)
                 drop = True
 
+        if item['qbo'] == "FALSE":
+            raise DropItem('DOES NOT USE QBO')
+            drop = True
+
         #variable to determine if person uses QBO or QBD. Defaults to QBO.
-        abc = "0"
+        abc = "1"
 
         #checks item if uses QBO
-        if item['qbo'] == "FALSE":
-            abc = "1"
+        if item['qbd'] == "FALSE":
+            abc = None
 
         #if item isn't dropped the following is used to add scraped information
         #    to RelateIQ as Contact, then Contact is added to the Leads list
@@ -123,8 +127,7 @@ class DuplicatesPipeline(object):
             listItem.contactIds([contact.id()]) #links to the contact created
             listItem.name(string.capwords(contact.name())) #adds name
             #updates certain field values based on IDs
-            listItem.fieldValues({"61":"2","58":contact.email(),
-                "51":contact.company(),"72":"0","87":"1","100":abc})
+            listItem.fieldValues({"61":"2","58":contact.email(),"51":string.capwords(item['companyName']),"72":"0","87":"1","100":["0", abc],"55":item['phoneNumber']})
             listItem.create() #created
 
         self.seen.add(email) #adds email to self.seen set
