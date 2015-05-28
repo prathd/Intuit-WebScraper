@@ -8,10 +8,10 @@
 import scrapy
 
 class DmozItem (scrapy.Item):
-	firstName = scrapy.Field()
-	lastName = scrapy.Field()
-	phoneNumber = scrapy.Field()
-	email = scrapy.Field()
-	companyName = scrapy.Field()
-	qbd = scrapy.Field()
-	qbo = scrapy.Field()
+    firstName = scrapy.Field()
+    lastName = scrapy.Field()
+    phoneNumber = scrapy.Field()
+    email = scrapy.Field()
+    companyName = scrapy.Field()
+    qbd = scrapy.Field()
+    qbo = scrapy.Field()
